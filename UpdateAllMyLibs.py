@@ -3,8 +3,14 @@
 import os
 import subprocess
 import shutil
+import argparse
 
-cwd = os.getcwd()
+parser = argparse.ArgumentParser(description="Updates all dem moka libs!")
+parser.add_argument("root", default=".")
+args = parser.parse_args()
+
+cwd = os.path.abspath(args.root)
+os.chdir(cwd)
 
 def pullLib(_name, _bInstall):
     if os.path.exists(_name):
